@@ -1,0 +1,19 @@
+build --bes_results_url=https://app.buildbuddy.dev/invocation/
+build --bes_backend=grpcs://remote.buildbuddy.dev
+build --remote_cache=grpcs://remote.buildbuddy.dev
+build --remote_timeout=3600
+build --remote_executor=grpcs://remote.buildbuddy.dev
+# build --remote_header=x-buildbuddy-api-key=UPDATE_ME_BEFORE_RUNNING
+
+build --disk_cache=
+build --incompatible_strict_action_env
+build --strategy=remote,local
+build --experimental_inmemory_dotd_files
+build --experimental_inmemory_jdeps_files
+
+build --host_platform=//:sluongng_platform
+build --platforms=//:sluongng_platform
+build --extra_execution_platforms=//:sluongng_platform
+build --crosstool_top=@buildbuddy_toolchain//:toolchain
+build --extra_toolchains=@buildbuddy_toolchain//:cc_toolchain
+build --define=EXECUTOR=remote
